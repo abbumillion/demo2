@@ -2,6 +2,7 @@ package controller;
 
 import javafx.concurrent.Task;
 import views.LoaderView;
+import views.PlayerView;
 import views.View;
 
 public class LoaderController extends Controller{
@@ -27,6 +28,11 @@ public class LoaderController extends Controller{
         loaderView.getProgressBar().progressProperty().bind(task.progressProperty());
         loaderView.getProgressMessageLabel().textProperty().bind(task.messageProperty());
         new Thread(task).start();
+        task.setOnSucceeded(e->{
+            PlayerController playerController = new PlayerController(new PlayerView());
+            playerController.register();
+            playerController.start();
+        });
     }
 
 
