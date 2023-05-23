@@ -5,7 +5,7 @@ import javafx.concurrent.Task;
 import java.io.File;
 
 public class Collector extends Task<Song> {
-    private File drive;
+    private final File drive;
     public Collector(File file)
     {
         this.drive = file;
@@ -25,11 +25,11 @@ public class Collector extends Task<Song> {
                 if (f.isDirectory()) {
                     extract(f);
                 }
-                else if (f.isFile()) {
-                    System.out.println(f.getName());
-                }
-                else
-                    System.out.println(f);
+//                else if (f.isFile()) {
+////                    System.out.println(f.getName());
+//                }
+//                else
+//                    System.out.println(f);
             }
         }
     }
